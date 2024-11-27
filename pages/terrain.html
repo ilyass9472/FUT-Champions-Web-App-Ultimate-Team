@@ -1,40 +1,67 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Player Card</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
     body {
+      box-sizing: border-box;
       font-family: 'Roboto', sans-serif;
     }
+
     .pérePrincipale {
       display: grid;
       grid-template-columns: 8fr 2fr;
+      height: 100%;
+      width: 100%;
     }
+
     .pére {
       display: grid;
-      height: 100vh;
-      width: 85vw;
-      background-image: url(../photos/عرض\ كامل\ من\ ملعب\ كرة\ القدم\ الخلفية\ صورة\ خلفية\ للتنزيل\ المجاني.jpg);
+      /* height: 100%;
+      width: 100%; */
+      background-image: url('../photos/عرض\ كامل\ من\ ملعب\ كرة\ القدم\ الخلفية\ صورة\ خلفية\ للتنزيل\ المجاني.jpg');
       background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    }
-    @media (max-width: 768px) { 
-      .pére {
-        width: 100vw;
-        height: auto;
-        background-size:cover;
-      }
+      background-position: center; */
+      /* background-size: cover; */
+      /* grid-template-rows: repeat(5, 1fr); */
+      /* padding: 10px;
+      
     }
 
     .filsAttack, .filsAttackUnder, .filsMilieu, .filsDefence, .filsGK {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      gap: 10px;
+    }
+
+    .btn {
+      background-color: #1d4ed8;
+      color: #ffffff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      text-align: center;
+    }
+    .btn:hover {
+      transform: scale(1.1);
+      background-color: #2563eb;
+    }
+
+    @media (max-width: 768px) {
+      .pére {
+        height: auto;
+      }
+
+      .filsAttack, .filsAttackUnder, .filsMilieu, .filsDefence, .filsGK {
+        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+        gap: 5px;
+      }
     }
   </style>
 </head>
@@ -42,79 +69,91 @@
   <div class="pérePrincipale">
     <div class="pére">
       <div class="filsAttack">
-        <div class="position(1,5)">
-          <button class="Btn(1,5)">+</button>
+        <div class="position-1-5">
+          <button class="btn">+</button>
         </div>
-        <div class="position(2,5)">
-          <button class="Btn(2,5)">+</button>
+        <div class="position-2-5">
+          <button class="btn">+</button>
         </div>
-        <div class="position(3,5)">
-          <button class="Btn(3,5)">+</button>
+        <div class="position-3-5">
+          <button class="btn">+</button>
         </div>
-        <div class="position(4,5)">
-          <button class="Btn(4,5)">+</button>
+        <div class="position-4-5">
+          <button class="btn">+</button>
         </div>
-        <div class="position(5,5)">
-          <button class="Btn(5,5)">+</button>
-        </div>
-      </div>
-      <div class="filsAttackUnder">
-        <div class="position(1,4)">
-          <button class="Btn(1,4)">+</button>
-        </div>
-        <div class="position(2,4)">
-          <button class="Btn(2,4)">+</button>
-        </div>
-        <div class="position(3,4)">
-          <button class="Btn(3,4)">+</button>
-        </div>
-        <div class="position(4,4)">
-          <button class="Btn(4,4)">+</button>
-        </div>
-        <div class="position(5,4)">
-          <button class="Btn(5,5)">+</button>
+        <div class="position-5-5">
+          <button class="btn">+</button>
         </div>
       </div>
-      <div class="filsMilieu">
-        <div class="position(1,3)">
-          <button class="Btn(1,3)">+</button>
+       <div class="filsAttackUnder">
+        <div class="position-1-4">
+          <button class="btn">+</button>
         </div>
-        <div class="position(2,3)">
-          <button class="Btn(2,3)">+</button>
+        <div class="position-2-4">
+          <button class="btn">+</button>
         </div>
-        <div class="position(3,3)">
-          <button class="Btn(3,3)">+</button>
+        <div class="position-3-4">
+          <button class="btn">+</button>
         </div>
-        <div class="position(4,3)">
-          <button class="Btn(4,3)">+</button>
+        <div class="position-4-4">
+          <button class="btn">+</button>
         </div>
-        <div class="position(5,3)">
-          <button class="Btn(5,3)">+</button>
+        <div class="position-5-4">
+          <button class="btn">+</button>
+        </div>
+      </div>
+
+       <div class="filsMilieu">
+        <div class="position-1-3">
+          <button class="btn">+</button>
+        </div>
+        <div class="position-2-3">
+          <button class="btn">+</button>
+        </div>
+        <div class="position-3-3">
+          <button class="btn">+</button>
+        </div>
+        <div class="position-4-3">
+          <button class="btn">+</button>
+        </div>
+        <div class="position-5-3">
+          <button class="btn">+</button>
         </div>
       </div>
       <div class="filsDefence">
-        <div class="position(1,5)">
-          <button class="Btn(1,5)">+</button>
+        <div class="position-1-2">
+          <button class="btn">+</button>
         </div>
-        <div class="position(2,5)">
-          <button class="Btn(2,5)">+</button>
+        <div class="position-2-2">
+          <button class="btn">+</button>
         </div>
-        <div class="position(3,5)">
-          <button class="Btn(3,5)">+</button>
+        <div class="position-3-2">
+          <button class="btn">+</button>
         </div>
-        <div class="position(4,5)">
-          <button class="Btn(4,5)">+</button>
+        <div class="position-4-2">
+          <button class="btn">+</button>
         </div>
-        <div class="position(5,5)">
-          <button class="Btn(5,5)">+</button>
+        <div class="position-5-2">
+          <button class="btn">+</button>
         </div>
       </div>
       <div class="filsGK">
-        <button>+</button>
+        <div class="position-1-1">
+          <button class="btn">+</button>
+        </div>
+        <div class="position-2-1">
+          <button class="btn">+</button>
+        </div>
+        <div class="position-3-1">
+          <button class="btn">+</button>
+        </div>
+        <div class="position-4-1">
+          <button class="btn">+</button>
+        </div>
+        <div class="position-5-1">
+          <button class="btn">+</button>
+        </div>
       </div>
-    </div>
-    <div>
-      <!-- Additional content can go here -->
     </div>
   </div> 
 </body>
