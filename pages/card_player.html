@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player Card</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .card-bg {
+      background: linear-gradient(to top, #222, #444, #666);
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .stats-bg {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-800">
+    <div class="card-bg text-white w-80 p-6 bg-[url('https://path-to-your-image.jpg')] bg-cover bg-center">
+    <div class="flex justify-between items-center">
+      <div class="text-center">
+        <div class="text-4xl font-bold">90</div>
+        <div class="text-lg font-semibold">ST</div>
+      </div>
+      <img 
+        src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" 
+        alt="Portugal Flag"
+        class="w-10 h-10 rounded-full border-2 border-white"
+      />
+    </div>
+    <div class="mt-4 flex justify-center">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg"
+        alt="Cristiano Ronaldo"
+        class="rounded-full w-32 h-32 border-4 border-gray-100"
+      />
+    </div>
+    <div class="mt-4 text-center text-2xl font-bold">CRISTIANO RONALDO</div>
+    <div class="grid grid-cols-3 gap-4 mt-6 text-center text-sm font-semibold stats-bg p-4">
+      <div>
+        <div class="text-xl font-bold">85</div>
+        <div class="text-gray-300">PAC</div>
+      </div>
+      <div>
+        <div class="text-xl font-bold">91</div>
+        <div class="text-gray-300">SHO</div>
+      </div>
+      <div>
+        <div class="text-xl font-bold">81</div>
+        <div class="text-gray-300">PAS</div>
+      </div>
+      <div>
+        <div class="text-xl font-bold">86</div>
+        <div class="text-gray-300">DRI</div>
+      </div>
+      <div>
+        <div class="text-xl font-bold">34</div>
+        <div class="text-gray-300">DEF</div>
+      </div>
+      <div>
+        <div class="text-xl font-bold">75</div>
+        <div class="text-gray-300">PHY</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
