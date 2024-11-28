@@ -15,20 +15,20 @@
     .pérePrincipale {
       display: grid;
       grid-template-columns: 8fr 2fr;
-      height: 100%;
-      width: 100%;
+      height: 200%;
+      width: 150%;
     }
 
     .pére {
       display: grid;
-      /* height: 100%;
-      width: 100%; */
+      height: 100%;
+      width: 100%;
       background-image: url('../photos/عرض\ كامل\ من\ ملعب\ كرة\ القدم\ الخلفية\ صورة\ خلفية\ للتنزيل\ المجاني.jpg');
       background-repeat: no-repeat;
       background-position: center; */
-      /* background-size: cover; */
-      /* grid-template-rows: repeat(5, 1fr); */
-      /* padding: 10px;
+      background-size: cover;
+      grid-template-rows: repeat(5, 1fr);
+      padding: 10px;
       
     }
 
@@ -63,6 +63,17 @@
         gap: 5px;
       }
     }
+    .card-bg {
+      background: linear-gradient(to top, #222, #444, #666);
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .stats-bg {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
   </style>
 </head>
 <body>
@@ -70,19 +81,159 @@
     <div class="pére">
       <div class="filsAttack">
         <div class="position-1-5">
-          <button class="btn">+</button>
+          <div class="card-bg text-white w-16 p-0.5 bg-[url('https://path-to-your-image.jpg')] bg-cover bg-center">
+            <div class="flex justify-between items-center">
+                <div class="text-center">
+                    <div class="text-[8px] font-bold">90</div>
+                    <div class="text-[6px] font-semibold">ST</div>
+                </div>
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" 
+                    alt="Portugal Flag"
+                    class="w-2 h-2 rounded-full border border-white"
+                />
+            </div>
+            <div class="mt-0.5 flex justify-center">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg"
+                    alt="Cristiano Ronaldo"
+                    class="rounded-full w-6 h-6 border border-gray-100"
+                />
+            </div>
+            <div class="mt-0.5 text-center text-[7px] font-bold leading-tight">CR7</div>
+            <div class="grid grid-cols-3 gap-0.5 mt-0.5 text-center text-[5px] font-semibold stats-bg p-0.5">
+                <div>
+                    <div class="text-[7px] font-bold">85</div>
+                    <div class="text-gray-300">PAC</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">91</div>
+                    <div class="text-gray-300">SHO</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">81</div>
+                    <div class="text-gray-300">PAS</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">86</div>
+                    <div class="text-gray-300">DRI</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">34</div>
+                    <div class="text-gray-300">DEF</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">75</div>
+                    <div class="text-gray-300">PHY</div>
+                </div>
+            </div>
+        </div>
+        
         </div>
         <div class="position-2-5">
-          <button class="btn">+</button>
         </div>
         <div class="position-3-5">
-          <button class="btn">+</button>
+          <div class="card-bg text-white w-16 p-0.5 bg-[url('https://path-to-your-image.jpg')] bg-cover bg-center">
+            <div class="flex justify-between items-center">
+                <div class="text-center">
+                    <div class="text-[8px] font-bold">90</div>
+                    <div class="text-[6px] font-semibold">ST</div>
+                </div>
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" 
+                    alt="Portugal Flag"
+                    class="w-2 h-2 rounded-full border border-white"
+                />
+            </div>
+            <div class="mt-0.5 flex justify-center">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg"
+                    alt="Cristiano Ronaldo"
+                    class="rounded-full w-6 h-6 border border-gray-100"
+                />
+            </div>
+            <div class="mt-0.5 text-center text-[7px] font-bold leading-tight">CR7</div>
+            <div class="grid grid-cols-3 gap-0.5 mt-0.5 text-center text-[5px] font-semibold stats-bg p-0.5">
+                <div>
+                    <div class="text-[7px] font-bold">85</div>
+                    <div class="text-gray-300">PAC</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">91</div>
+                    <div class="text-gray-300">SHO</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">81</div>
+                    <div class="text-gray-300">PAS</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">86</div>
+                    <div class="text-gray-300">DRI</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">34</div>
+                    <div class="text-gray-300">DEF</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">75</div>
+                    <div class="text-gray-300">PHY</div>
+                </div>
+            </div>
+        </div>
+        
         </div>
         <div class="position-4-5">
-          <button class="btn">+</button>
+          
         </div>
         <div class="position-5-5">
-          <button class="btn">+</button>
+          <div class="card-bg text-white w-16 p-0.5 bg-[url('https://path-to-your-image.jpg')] bg-cover bg-center">
+            <div class="flex justify-between items-center">
+                <div class="text-center">
+                    <div class="text-[8px] font-bold">90</div>
+                    <div class="text-[6px] font-semibold">ST</div>
+                </div>
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" 
+                    alt="Portugal Flag"
+                    class="w-2 h-2 rounded-full border border-white"
+                />
+            </div>
+            <div class="mt-0.5 flex justify-center">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg"
+                    alt="Cristiano Ronaldo"
+                    class="rounded-full w-6 h-6 border border-gray-100"
+                />
+            </div>
+            <div class="mt-0.5 text-center text-[7px] font-bold leading-tight">CR7</div>
+            <div class="grid grid-cols-3 gap-0.5 mt-0.5 text-center text-[5px] font-semibold stats-bg p-0.5">
+                <div>
+                    <div class="text-[7px] font-bold">85</div>
+                    <div class="text-gray-300">PAC</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">91</div>
+                    <div class="text-gray-300">SHO</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">81</div>
+                    <div class="text-gray-300">PAS</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">86</div>
+                    <div class="text-gray-300">DRI</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">34</div>
+                    <div class="text-gray-300">DEF</div>
+                </div>
+                <div>
+                    <div class="text-[7px] font-bold">75</div>
+                    <div class="text-gray-300">PHY</div>
+                </div>
+            </div>
+        </div>
+        
         </div>
       </div>
        <div class="filsAttackUnder">
