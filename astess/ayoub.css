@@ -5,7 +5,27 @@
     width: 100px;
   }
   body{
-    background-image: url(../photos/terain.jpg);
+    background-image: url(../photos/vue-stade-football-vide-ciel-fantastique-reveur_23-2151563002.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
  
- 
+  }
+  .background-section {
+    background-image: url('https://www.futbin.com/design2/img/static/field-bg.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 100%;
+  }
+  .card-bg {
+    background: linear-gradient(to top, #222, #444, #666);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .stats-bg {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
   }
