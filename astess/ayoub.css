@@ -8,14 +8,14 @@
     background-image: url(../photos/vue-stade-football-vide-ciel-fantastique-reveur_23-2151563002.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
- 
+    width: 100%;
   }
   .background-section {
     background-image: url('https://www.futbin.com/design2/img/static/field-bg.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 300px;
+    height: 100%;
     width: 100%;
   }
   .card-bg {
