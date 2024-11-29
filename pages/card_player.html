@@ -1,10 +1,10 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Player Card</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
     body {
@@ -24,53 +24,208 @@
     }
   </style>
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gray-800">
-    <div class="card-bg text-white w-80 p-6 bg-[url('https://path-to-your-image.jpg')] bg-cover bg-center">
-    <div class="flex justify-between items-center">
-      <div class="text-center">
-        <div class="text-4xl font-bold">90</div>
-        <div class="text-lg font-semibold">ST</div>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-800">
+  <div class="flex space-x-4 mb-6">
+    <button id="openModal" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+      <i class="fas fa-plus"></i> Add Card
+    </button>
+    <button id="deleteCard" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+      <i class="fas fa-trash"></i> Delete Card
+    </button>
+  </div>
+
+  <div id="cardContainer" class="space-y-6">
+    <div class="card-bg text-white w-80 p-6 bg-[url('https://placehold.co/300x400')] bg-cover bg-center">
+      <div class="flex justify-between items-center">
+        <div class="text-center">
+          <div class="text-4xl font-bold">90</div>
+          <div class="text-lg font-semibold">ST</div>
+        </div>
+        <img 
+          src="https://storage.googleapis.com/a1aa/image/szLrTLyPO5b3OBPvDNbW6MZa9scknoWjhqzKHeNfGF8uQr1TA.jpg" 
+          alt="A circular image of the Portugal flag with a complex coat of arms in the center"
+          class="w-10 h-10 rounded-full border-2 border-white"
+        />
       </div>
-      <img 
-        src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" 
-        alt="Portugal Flag"
-        class="w-10 h-10 rounded-full border-2 border-white"
-      />
-    </div>
-    <div class="mt-4 flex justify-center">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg"
-        alt="Cristiano Ronaldo"
-        class="rounded-full w-32 h-32 border-4 border-gray-100"
-      />
-    </div>
-    <div class="mt-4 text-center text-2xl font-bold">CRISTIANO RONALDO</div>
-    <div class="grid grid-cols-3 gap-4 mt-6 text-center text-sm font-semibold stats-bg p-4">
-      <div>
-        <div class="text-xl font-bold">85</div>
-        <div class="text-gray-300">PAC</div>
+      <div class="mt-4 flex justify-center">
+        <img
+          src="https://storage.googleapis.com/a1aa/image/ZeHHR5U6GmQBbq1YxFawiY0zi24bIu5HCdaXG0TrwJuXo16JA.jpg"
+          alt="A close-up image of Cristiano Ronaldo in a football jersey"
+          class="rounded-full w-32 h-32 border-4 border-gray-100"
+        />
       </div>
-      <div>
-        <div class="text-xl font-bold">91</div>
-        <div class="text-gray-300">SHO</div>
-      </div>
-      <div>
-        <div class="text-xl font-bold">81</div>
-        <div class="text-gray-300">PAS</div>
-      </div>
-      <div>
-        <div class="text-xl font-bold">86</div>
-        <div class="text-gray-300">DRI</div>
-      </div>
-      <div>
-        <div class="text-xl font-bold">34</div>
-        <div class="text-gray-300">DEF</div>
-      </div>
-      <div>
-        <div class="text-xl font-bold">75</div>
-        <div class="text-gray-300">PHY</div>
+      <div class="mt-4 text-center text-2xl font-bold">CRISTIANO RONALDO</div>
+      <div class="grid grid-cols-3 gap-4 mt-6 text-center text-sm font-semibold stats-bg p-4">
+        <div>
+          <div class="text-xl font-bold">85</div>
+          <div class="text-gray-300">PAC</div>
+        </div>
+        <div>
+          <div class="text-xl font-bold">91</div>
+          <div class="text-gray-300">SHO</div>
+        </div>
+        <div>
+          <div class="text-xl font-bold">81</div>
+          <div class="text-gray-300">PAS</div>
+        </div>
+        <div>
+          <div class="text-xl font-bold">86</div>
+          <div class="text-gray-300">DRI</div>
+        </div>
+        <div>
+          <div class="text-xl font-bold">34</div>
+          <div class="text-gray-300">DEF</div>
+        </div>
+        <div>
+          <div class="text-xl font-bold">75</div>
+          <div class="text-gray-300">PHY</div>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Modal -->
+  <!-- Modal -->
+<div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+  <div class="bg-white rounded-lg p-6 w-96 max-h-[90vh] overflow-y-auto">
+    <h2 class="text-2xl font-bold mb-4">Add New Card</h2>
+    <form id="addCardForm">
+      <div class="mb-4">
+        <label class="block text-gray-700">Player Name</label>
+        <input type="text" id="playerName" class="w-full px-3 py-2 border rounded" required>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700">Position</label>
+        <select id="position" class="w-full px-3 py-2 border rounded" required>
+          <option value="GK">GK</option>
+          <option value="CB">CB</option>
+          <option value="RB">RB</option>
+          <option value="LB">LB</option>
+          <option value="CDM">CDM</option>
+          <option value="CM">CM</option>
+          <option value="CAM">CAM</option>
+          <option value="RW">RW</option>
+          <option value="LW">LW</option>
+          <option value="ST">ST</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700">Rating</label>
+        <input type="number" id="rating" class="w-full px-3 py-2 border rounded" max="100" required>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700">PAC</label>
+        <input type="number" id="pac" class="w-full px-3 py-2 border rounded" max="100" required>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700">SHO</label>
+        <input type="number" id="sho" class="w-full px-3 py-2 border rounded" max="100" required>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700">PAS</label>
+        <input type="number" id="pas" class="w-full px-3 py-2 border rounded" max="100" required>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700">DRI</label>
+        <input type="number" id="dri" class="w-full px-3 py-2 border rounded" max="100" required>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700">DEF</label>
+        <input type="number" id="def" class="w-full px-3 py-2 border rounded" max="100" required>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700">PHY</label>
+        <input type="number" id="phy" class="w-full px-3 py-2 border rounded" max="100" required>
+      </div>
+      <div class="flex justify-end space-x-4">
+        <button type="button" id="closeModal" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Add</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+  <script>
+    document.getElementById('openModal').addEventListener('click', function() {
+      document.getElementById('modal').classList.remove('hidden');
+    });
+
+    document.getElementById('closeModal').addEventListener('click', function() {
+      document.getElementById('modal').classList.add('hidden');
+    });
+
+    document.getElementById('addCardForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const playerName = document.getElementById('playerName').value;
+      const position = document.getElementById('position').value;
+      const rating = document.getElementById('rating').value;
+      const pac = document.getElementById('pac').value;
+      const sho = document.getElementById('sho').value;
+      const pas = document.getElementById('pas').value;
+      const dri = document.getElementById('dri').value;
+      const def = document.getElementById('def').value;
+      const phy = document.getElementById('phy').value;
+
+      const cardContainer = document.getElementById('cardContainer');
+      const newCard = document.createElement('div');
+      newCard.className = 'card-bg text-white w-80 p-6 bg-[url("https://placehold.co/300x400")] bg-cover bg-center';
+      newCard.innerHTML = `
+        <div class="flex justify-between items-center">
+          <div class="text-center">
+            <div class="text-4xl font-bold">${rating}</div>
+            <div class="text-lg font-semibold">${position}</div>
+          </div>
+          <img 
+            src="https://storage.googleapis.com/a1aa/image/szLrTLyPO5b3OBPvDNbW6MZa9scknoWjhqzKHeNfGF8uQr1TA.jpg" 
+            alt="A circular image of the Portugal flag with a complex coat of arms in the center"
+            class="w-10 h-10 rounded-full border-2 border-white"
+          />
+        </div>
+        <div class="mt-4 flex justify-center">
+          <img
+            src="https://storage.googleapis.com/a1aa/image/ZeHHR5U6GmQBbq1YxFawiY0zi24bIu5HCdaXG0TrwJuXo16JA.jpg"
+            alt="A close-up image of Cristiano Ronaldo in a football jersey"
+            class="rounded-full w-32 h-32 border-4 border-gray-100"
+          />
+        </div>
+        <div class="mt-4 text-center text-2xl font-bold">${playerName}</div>
+        <div class="grid grid-cols-3 gap-4 mt-6 text-center text-sm font-semibold stats-bg p-4">
+          <div>
+            <div class="text-xl font-bold">${pac}</div>
+            <div class="text-gray-300">PAC</div>
+          </div>
+          <div>
+            <div class="text-xl font-bold">${sho}</div>
+            <div class="text-gray-300">SHO</div>
+          </div>
+          <div>
+            <div class="text-xl font-bold">${pas}</div>
+            <div class="text-gray-300">PAS</div>
+          </div>
+          <div>
+            <div class="text-xl font-bold">${dri}</div>
+            <div class="text-gray-300">DRI</div>
+          </div>
+          <div>
+            <div class="text-xl font-bold">${def}</div>
+            <div class="text-gray-300">DEF</div>
+          </div>
+          <div>
+            <div class="text-xl font-bold">${phy}</div>
+            <div class="text-gray-300">PHY</div>
+          </div>
+        </div>
+      `;
+      cardContainer.appendChild(newCard);
+      document.getElementById('modal').classList.add('hidden');
+    });
+
+    document.getElementById('deleteCard').addEventListener('click', function() {
+      const cardContainer = document.getElementById('cardContainer');
+      if (cardContainer.children.length > 0) {
+        cardContainer.removeChild(cardContainer.lastChild);
+      }
+    });
+  </script>
 </body>
 </html>

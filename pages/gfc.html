@@ -1,128 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Game</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        #field {
-            position: relative;
-            width: 800px;
-            height: 400px;
-            margin: 20px auto;
-            border: 2px solid #333;
-            background-color: #4caf50;
-            overflow: hidden;
-        }
-        .player {
-            position: absolute;
-            cursor: pointer;
-            text-align: center;
-        }
-        .player img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
-        .player .info {
-            display: none;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 5px;
-            border-radius: 5px;
-            position: absolute;
-            top: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .player:hover .info {
-            display: block;
-        }
-        #switch {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #switch:hover {
-            background-color: #0056b3;
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Layout</title>
+  <link rel="stylesheet" href="../astess/ayoub.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
-    <div id="field"></div>
-    <button id="switch">Switch Sides</button>
+  <div class="container mt-4">
+    
+    <div class="row mb-3">
+      
+      <div class="col-md-8 text-white p-4 section">
+        <img src="https://www.futbin.com/design2/img/static/field-bg.svg" alt=""> 
+        
+      </div>
+    
+      <div class="col-md-4 bg-secondary text-white p-4 section">
+        <h3>الجزء الثاني</h3>
+        <p>هذا النص يمثل الجزء الثاني من الصفحة بعرض 30%.</p>
+      </div>
+    </div>
 
-    <script>
-        const data = {
-            home: [
-                { name: 'Ronaldo', img: 'ronaldo.png', height: 180, goals: 22, position: [60, 70] },
-                { name: 'Bale', img: 'bale.png', height: 175, goals: 12, position: [210, 150] },
-                { name: 'Benzema', img: 'benzema.png', height: 180, goals: 19, position: [360, 50] }
-            ],
-            away: [
-                { name: 'Messi', img: 'messi.png', height: 165, goals: 30, position: [60, 70] },
-                { name: 'Neymar', img: 'neymar.png', height: 170, goals: 20, position: [210, 150] },
-                { name: 'Suarez', img: 'suarez.png', height: 180, goals: 18, position: [360, 50] }
-            ]
-        };
+    <!-- الصف الثاني (100%) -->
+    <div class="row">
+      <div class="col-12 bg-success text-white p-4 ilyass">
+        <h3>الجزء الثالث</h3>
+        <p>هذا النص يمثل الجزء الثالث من الصفحة بعرض 100%.</p>
+      </div>
+    </div>
+  </div>
 
-        const state = {
-            currentTeam: 'home',
-            switchSides: function () {
-                this.currentTeam = this.currentTeam === 'home' ? 'away' : 'home';
-            }
-        };
-
-        const displayNone = (selector) => $(selector).css('display', 'none');
-        const displayBlock = (selector) => $(selector).css('display', 'block');
-
-        const addPlayer = (player) => {
-            const $player = $('<div class="player">').append(
-                $('<img>').attr('src', player.img),
-                $('<div class="info">').append(
-                    $('<h2>').text(player.name),
-                    $('<p>').text(`Height: ${player.height}cm`),
-                    $('<p>').text(`Goals: ${player.goals}`)
-                )
-            );
-
-            $player.css({ left: player.position[0], top: player.position[1] });
-            $player.on('click', () => {
-                $player.velocity({ scale: 1.5 }, 300);
-            });
-
-            $('#field').append($player);
-        };
-
-        const addPlayers = (team) => {
-            data[team].forEach((player) => addPlayer(player));
-        };
-
-        const setup = () => {
-            addPlayers(state.currentTeam);
-
-            $('#switch').on('click', () => {
-                state.switchSides();
-                $('#field').empty();
-                addPlayers(state.currentTeam);
-            });
-
-            $('#field').on('mouseleave', () => {
-                $('.player').velocity({ scale: 1 }, 300);
-            });
-        };
-
-        $(document).ready(setup);
-    </script>
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
