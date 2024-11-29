@@ -1,0 +1,33 @@
+[
+    {
+      "rating": 85,
+      "position": "GK",
+      "flag": "https://storage.googleapis.com/a1aa/image/su0jyNJFSf19PSEleRtg72zMOHhF2DBeLJ8Q3m3yRRifneueE.jpg",
+      "playerImage": "https://storage.googleapis.com/a1aa/image/zbtrLenpQsW7WSAG4f8bDkHgZtgzkc8OcRStMVa7Pfp7TvrnA.jpg",
+      "playerName": "Player Name 1",
+      "stats": {
+        "PAC": 85,
+        "SHO": 91,
+        "PAS": 81,
+        "DRI": 86,
+        "DEF": 34,
+        "PHY": 75
+      }
+    },
+    {
+      "rating": 87,
+      "position": "GK",
+      "flag": "https://storage.googleapis.com/a1aa/image/su0jyNJFSf19PSEleRtg72zMOHhF2DBeLJ8Q3m3yRRifneueE.jpg",
+      "playerImage": "https://storage.googleapis.com/a1aa/image/zbtrLenpQsW7WSAG4f8bDkHgZtgzkc8OcRStMVa7Pfp7TvrnA.jpg",
+      "playerName": "Player Name 2",
+      "stats": {
+        "PAC": 88,
+        "SHO": 92,
+        "PAS": 80,
+        "DRI": 87,
+        "DEF": 33,
+        "PHY": 77
+      }
+    }
+  ]
+  
