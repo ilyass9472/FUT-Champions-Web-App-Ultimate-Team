@@ -29,3 +29,35 @@
     border-radius: 10px;
     backdrop-filter: blur(10px);
   }
+  .container {
+    display: grid;
+    grid-template-columns: 7fr 3fr; 
+    grid-template-rows: 100vh; 
+    gap: 0px 0%; 
+    grid-template-areas:
+    
+      "ter list"; 
+  }
+  .list { 
+    height: 100%;
+    grid-area: list;
+  }
+  .ter {
+    display: grid; 
+  grid-template-columns: 0.75fr 0.75fr 0.75fr 0.75fr 0.75fr 0.75fr 0.75fr; 
+  grid-template-rows: 0.75fr 0.75fr 0.75fr 0.75fr 0.75fr 0.75fr 0.75fr; 
+  gap: 0px 0%; 
+  grid-template-areas: 
+    ". . . . ."
+    ". . . . ."
+    ". . . . ."
+    ". . . . ."
+    ". . . . ."; 
+    margin-top: 3%;
+    height: 100%;
+    width: 100%;
+    grid-area: ter;
+    background-image: url(https://www.futbin.com/design2/img/static/field-bg.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 110%;
+  }
