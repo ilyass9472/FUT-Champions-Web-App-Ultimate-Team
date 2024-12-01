@@ -22,7 +22,7 @@
     <div class="container">
         <!-- Draggable Player Cards -->
         <div id="playerList" class="grid grid-cols-4 gap-2 mb-4">
-            <div class="player-card text-white bg-[#1d3557] rounded-lg p-1 h-20" draggable="true" data-player="CRISTIANO RONALDO">
+            <div class="player-card text-white rounded-lg p-1 h-20" draggable="true" data-player="CRISTIANO RONALDO" style="background-image: url(../photos/images-removebg-preview.png); background-size: cover;">
                 <div class="flex justify-between px-1 items-center h-5">
                     <div class="text-center">
                         <p class="text-[6px] font-bold">90</p>
@@ -38,7 +38,7 @@
                 </div>
             </div>
     
-            <div class="player-card text-white bg-[#1d3557] rounded-lg p-1" draggable="true" data-player="LIONEL MESSI">
+            <div class="player-card text-white  rounded-lg p-1" draggable="true" data-player="LIONEL MESSI">
                 <div class="flex justify-between px-1 items-center">
                     <div class="text-center">
                         <p class="text-[6px] font-bold">91</p>
@@ -129,10 +129,10 @@
     
             players.forEach((player) => {
                 const card = `
-                    <div class="text-white bg-[#1d3557] rounded-lg p-4 shadow-lg">
+                    <div class="text-white  rounded-lg p-4 shadow-lg">
                         
                         <div class="flex justify-between items-center">
-                            <div class="player-card text-white h-32 bg-[#1d3557] rounded-lg" draggable="true" data-player="LIONEL MESSI">
+                            <div class="player-card text-white h-32  rounded-lg" draggable="true" data-player="LIONEL MESSI">
                             <div class="text-center">
                                 <p class="text-xs font-bold">${player.rating}</p>
                                 <p class="text-xs font-semibold">${player.position}</p>
@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (player) {
                 // Generate player card with stats
                 const playerHTML = `
-                    <div class="text-white bg-[#1d3557] rounded-lg p-2 shadow-lg">
+                    <div class="text-white  rounded-lg p-2 shadow-lg">
                         <div class="flex justify-between items-center">
                             <div class="text-center">
                                 <p class="text-xs font-bold">${player.rating}</p>
@@ -287,14 +287,13 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="7_7"></div>
             <div class="1_6"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 bg-gray-200 rounded-lg" draggable="true" id="slot-1" data-slot="1">
-                    <p class="text-center text-sm text-gray-500">Drop Player Here</p>
+                <div class="terrain-slot w-32 h-40 rounded-lg" draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
                 </div>
             </div>
 
             <div class="3_6"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 bg-gray-200 rounded-lg"  draggable="true" id="slot-1" data-slot="1">
+                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
                     <p class="text-center text-sm text-gray-500">Drop Player Here</p>
                 </div>
             </div>
@@ -302,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             <div class="5_6"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 bg-gray-200 rounded-lg"  draggable="true" id="slot-1" data-slot="1">
+                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
                     <p class="text-center text-sm text-gray-500">Drop Player Here</p>
                 </div>
             </div>
@@ -312,7 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="2_6"></div>
             <div class="3_6"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 bg-gray-200 rounded-lg"  draggable="true" id="slot-1" data-slot="1">
+                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
                     <p class="text-center text-sm text-gray-500">Drop Player Here</p>
                 </div>
             </div>
@@ -322,7 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="7_5"></div>
             <div class="1_5"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 bg-gray-200 rounded-lg"  draggable="true" id="slot-1" data-slot="1">
+                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
                     <p class="text-center text-sm text-gray-500">Drop Player Here</p>
                 </div>
             </div>
@@ -331,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="4_5"></div>
             <div class="5_5"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 bg-gray-200 rounded-lg"  draggable="true" id="slot-1" data-slot="1">
+                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
                     <p class="text-center text-sm text-gray-500">Drop Player Here</p>
                 </div>
             </div>
@@ -339,25 +338,25 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="7_5"></div>
             <div class="1_4"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 bg-gray-200 rounded-lg"  draggable="true" id="slot-1" data-slot="1">
+                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
                     <p class="text-center text-sm text-gray-500">Drop Player Here</p>
                 </div>
             </div>
 
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 bg-gray-200 rounded-lg"  draggable="true" id="slot-1" data-slot="1">
+                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
                     <p class="text-center text-sm text-gray-500">Drop Player Here</p>
                 </div>
             </div>
             <div class="4_4"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 bg-gray-200 rounded-lg"  draggable="true" id="slot-1" data-slot="1">
+                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
                     <p class="text-center text-sm text-gray-500">Drop Player Here</p>
                 </div>
             </div>
 
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 bg-gray-200 rounded-lg"  draggable="true" id="slot-1" data-slot="1">
+                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
                     <p class="text-center text-sm text-gray-500">Drop Player Here</p>
                 </div>
             </div>
@@ -374,7 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="2_2"></div>
             <div class="3_2"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 bg-gray-200 rounded-lg"  draggable="true" id="slot-1" data-slot="1">
+                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
                     <p class="text-center text-sm text-gray-500">Drop Player Here</p>
                 </div>
             </div>
