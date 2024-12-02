@@ -20,8 +20,10 @@
 
 
     <div class="container">
-        <!-- Draggable Player Cards -->
+
+        
         <div id="playerList" class="grid grid-cols-4 gap-2 mb-4">
+          
             <div class="player-card text-white rounded-lg p-1 h-20" draggable="true" data-player="CRISTIANO RONALDO" style="background-image: url(../photos/images-removebg-preview.png); background-size: cover;">
                 <div class="flex justify-between px-1 items-center h-5">
                     <div class="text-center">
@@ -54,229 +56,176 @@
                 </div>
             </div>
         </div>
-    
+        <script>
 
 
-          <script>
-            const players = [
-                {
-                    name: "CRISTIANO RONALDO",
-                    position: "ST",
-                    rating: 90,
-                    stats: { PAC: 85, SHO: 91, PAS: 81, DRI: 86, DEF: 34, PHY: 75 },
-                    countryImg: "https://placehold.co/32x32?text=Portugal+Flag",
-                    playerImg: "https://placehold.co/64x64?text=Cristiano+Ronaldo",
-                },
-                {
-                    name: "LIONEL MESSI",
-                    position: "RW",
-                    rating: 91,
-                    stats: { PAC: 87, SHO: 90, PAS: 92, DRI: 95, DEF: 34, PHY: 68 },
-                    countryImg: "https://placehold.co/32x32?text=Argentina+Flag",
-                    playerImg: "https://placehold.co/64x64?text=Lionel+Messi",
-                },
-                {
-                    name: "NEYMAR JR",
-                    position: "LW",
-                    rating: 89,
-                    stats: { PAC: 91, SHO: 85, PAS: 84, DRI: 94, DEF: 32, PHY: 60 },
-                    countryImg: "https://placehold.co/32x32?text=Brazil+Flag",
-                    playerImg: "https://placehold.co/64x64?text=Neymar+Jr",
-                },
-                {
-                    name: "KEVIN DE BRUYNE",
-                    position: "CM",
-                    rating: 91,
-                    stats: { PAC: 76, SHO: 86, PAS: 93, DRI: 88, DEF: 64, PHY: 78 },
-                    countryImg: "https://placehold.co/32x32?text=Belgium+Flag",
-                    playerImg: "https://placehold.co/64x64?text=Kevin+De+Bruyne",
-                },
-                {
-                    name: "VIRGIL VAN DIJK",
-                    position: "CB",
-                    rating: 90,
-                    stats: { PAC: 76, SHO: 60, PAS: 71, DRI: 72, DEF: 91, PHY: 86 },
-                    countryImg: "https://placehold.co/32x32?text=Netherlands+Flag",
-                    playerImg: "https://placehold.co/64x64?text=Virgil+Van+Dijk",
-                },
-                {
-                    name: "KYLIAN MBAPPE",
-                    position: "ST",
-                    rating: 91,
-                    stats: { PAC: 97, SHO: 88, PAS: 80, DRI: 92, DEF: 36, PHY: 76 },
-                    countryImg: "https://placehold.co/32x32?text=France+Flag",
-                    playerImg: "https://placehold.co/64x64?text=Kylian+Mbappe",
-                },
-                {
-                    name: "MOHAMED SALAH",
-                    position: "RW",
-                    rating: 90,
-                    stats: { PAC: 93, SHO: 87, PAS: 81, DRI: 90, DEF: 45, PHY: 75 },
-                    countryImg: "https://placehold.co/32x32?text=Egypt+Flag",
-                    playerImg: "https://placehold.co/64x64?text=Mohamed+Salah",
-                },
-                {
-                    name: "SADIO MANE",
-                    position: "LW",
-                    rating: 89,
-                    stats: { PAC: 94, SHO: 83, PAS: 80, DRI: 88, DEF: 44, PHY: 76 },
-                    countryImg: "https://placehold.co/32x32?text=Senegal+Flag",
-                    playerImg: "https://placehold.co/64x64?text=Sadio+Mane",
-                }
-            ];
-    
+        document.addEventListener("DOMContentLoaded", () => {
             const container = document.getElementById("cardContainer");
-    
-            players.forEach((player) => {
-                const card = `
-                    <div class="text-white  rounded-lg p-4 shadow-lg">
-                        
-                        <div class="flex justify-between items-center">
-                            <div class="player-card text-white h-32  rounded-lg" draggable="true" data-player="LIONEL MESSI">
-                            <div class="text-center">
-                                <p class="text-xs font-bold">${player.rating}</p>
-                                <p class="text-xs font-semibold">${player.position}</p>
+            const terrainSlots = document.querySelectorAll(".terrain-slot");
+        
+            // Fetch data from JSON file
+            fetch("players.json")
+                .then((response) => response.json())
+                .then((players) => {
+                    // Render player cards
+                    players.forEach((player) => {
+                        const card = `
+                            <div class="player-card text-white rounded-lg p-4 shadow-lg" draggable="true" data-player="${player.name}">
+                                <div class="flex justify-between items-center">
+                                    <div class="text-center">
+                                        <p class="text-xs font-bold">${player.rating}</p>
+                                        <p class="text-xs font-semibold">${player.position}</p>
+                                    </div>
+                                    <img src="${player.countryImg}" alt="Flag of ${player.name}'s country" class="w-8 h-8 rounded-full border-2 border-white" />
+                                </div>
+                                <div class="flex justify-center mt-2">
+                                    <img src="${player.playerImg}" alt="Image of ${player.name}" class="rounded-full w-16 h-16 border-2 border-gray-300" />
+                                </div>
+                                <div class="text-center text-sm pt-2 font-bold">
+                                    <h1>${player.name}</h1>
+                                </div>
+                                <div class="flex flex-wrap justify-center mt-2">
+                                    ${Object.entries(player.stats)
+                                        .map(
+                                            ([key, value]) => `
+                                            <div class="w-1/3 text-center">
+                                                <p class="text-xs font-semibold">${value}</p>
+                                                <p class="text-xs text-gray-300">${key}</p>
+                                            </div>`
+                                        )
+                                        .join("")}
+                                </div>
                             </div>
-                            <img src="${player.countryImg}" alt="Flag of ${player.name}'s country" class="w-8 h-8 rounded-full border-2 border-white" />
-                        </div>
-                        <div class="flex justify-center mt-2">
-                            <img src="${player.playerImg}" alt="Image of ${player.name}" class="rounded-full w-16 h-16 border-2 border-gray-300" />
-                        </div>
-                        <div class="text-center text-sm pt-2 font-bold">
-                            <h1>${player.name}</h1>
-                        </div>
-                        <div class="flex flex-wrap justify-center mt-2">
-                            </div>
-                            ${Object.entries(player.stats).map(
-                                ([key, value]) => `
-                                    <div class="w-1/3 text-center">
-                                        <p class="text-xs font-semibold">${value}</p>
-                                        <p class="text-xs text-gray-300">${key}</p>
-                                        <div class="flex justify-center mt-1">
-                                            <button class="text-xs text-green-500 mx-1"><i class="fas fa-plus"></i></button>
-                                            <button class="text-xs text-yellow-500 mx-1"><i class="fas fa-edit"></i></button>
-                                        </div>
-                                    </div>`
-                            ).join("")}
-                            </div>
-                        </div>
-                    </div>
-                `;
-                container.innerHTML += card;
-            });
-    
-            document.querySelectorAll('.fa-plus').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const statElement = event.target.closest('.text-center').querySelector('.font-semibold');
-                    let statValue = parseInt(statElement.textContent);
-                    statElement.textContent = statValue + 1;
+                        `;
+                        container.innerHTML += card;
+                    });
+        
+                    // Make cards draggable
+                    enableDragAndDrop();
+                })
+                .catch((error) => console.error("Error loading players:", error));
+        
+            // Enable drag and drop functionality
+            function enableDragAndDrop() {
+                const playerCards = document.querySelectorAll(".player-card");
+        
+                playerCards.forEach((card) => {
+                    card.addEventListener("dragstart", (e) => {
+                        e.dataTransfer.setData("text/plain", e.target.outerHTML);
+                        setTimeout(() => {
+                            e.target.style.display = "none";
+                        }, 0);
+                    });
+        
+                    card.addEventListener("dragend", (e) => {
+                        e.target.style.display = "block";
+                    });
                 });
-            });
-    
-            document.querySelectorAll('.fa-edit').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const statElement = event.target.closest('.text-center').querySelector('.font-semibold');
-                    let newStatValue = prompt("Enter new stat value:", statElement.textContent);
-                    if (newStatValue !== null) {
-                        statElement.textContent = newStatValue;
-                    }
+        
+                terrainSlots.forEach((slot) => {
+                    slot.addEventListener("dragover", (e) => {
+                        e.preventDefault();
+                        slot.classList.add("bg-gray-200");
+                    });
+        
+                    slot.addEventListener("dragleave", () => {
+                        slot.classList.remove("bg-gray-200");
+                    });
+        
+                    slot.addEventListener("drop", (e) => {
+                        e.preventDefault();
+                        slot.classList.remove("bg-gray-200");
+        
+                        if (slot.innerHTML.trim() !== "") {
+                            alert("This slot is already occupied!");
+                            return;
+                        }
+        
+                        const cardHTML = e.dataTransfer.getData("text/plain");
+                        slot.innerHTML = cardHTML;
+        
+                        const droppedCard = slot.querySelector(".player-card");
+                        droppedCard.style.display = "block";
+        
+                        // Re-enable dragging for the dropped card
+                        droppedCard.addEventListener("dragstart", (e) => {
+                            e.dataTransfer.setData("text/plain", e.target.outerHTML);
+                            setTimeout(() => {
+                                e.target.style.display = "none";
+                            }, 0);
+                        });
+        
+                        droppedCard.addEventListener("dragend", (e) => {
+                            e.target.style.display = "block";
+                        });
+                    });
                 });
-            });
+            }
+        });
         </script>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const players = {
-        "CRISTIANO RONALDO": {
-            position: "ST",
-            rating: 90,
-            stats: { PAC: 85, SHO: 91, PAS: 81, DRI: 86, DEF: 34, PHY: 75 },
-            countryImg: "https://placehold.co/32x32?text=Portugal+Flag",
-            playerImg: "https://cdn.sofifa.net/players/020/801/25_120.png",
-        },
-        "LIONEL MESSI": {
-            position: "RW",
-            rating: 91,
-            stats: { PAC: 87, SHO: 90, PAS: 92, DRI: 95, DEF: 34, PHY: 68 },
-            countryImg: "https://placehold.co/32x32?text=Argentina+Flag",
-            playerImg: "https://cdn.sofifa.net/players/210/422/25_120.png",
-        },
-        // Add more players here
-    };
-
+    document.addEventListener("DOMContentLoaded", () => {
     const playerCards = document.querySelectorAll(".player-card");
     const terrainSlots = document.querySelectorAll(".terrain-slot");
 
-    // Handle dragging
-    playerCards.forEach((player) => {
-        player.addEventListener("dragstart", (e) => {
-            const playerName = player.dataset.player;
-            e.dataTransfer.setData("text/plain", playerName); // Save the player's name
+    // اجعل جميع البطاقات قابلة للسحب
+    playerCards.forEach((card) => {
+        card.addEventListener("dragstart", (e) => {
+            e.dataTransfer.setData("text/plain", e.target.outerHTML); // احفظ HTML البطاقة المسحوبة
+            setTimeout(() => {
+                e.target.style.display = "none"; // أخفِ البطاقة أثناء السحب
+            }, 0);
+        });
+
+        card.addEventListener("dragend", (e) => {
+            e.target.style.display = "block"; // أعد البطاقة عند انتهاء السحب
         });
     });
 
-    // Handle drop events on terrain slots
+    // اجعل جميع المواقع قابلة للإسقاط
     terrainSlots.forEach((slot) => {
         slot.addEventListener("dragover", (e) => {
-            e.preventDefault(); // Allow dropping
-            slot.classList.add("bg-gray-300"); // Highlight slot
+            e.preventDefault(); // السماح بالإسقاط
+            slot.classList.add("bg-gray-200"); // أضف تأثيرًا بصريًا
         });
 
         slot.addEventListener("dragleave", () => {
-            slot.classList.remove("bg-gray-300"); // Remove highlight
+            slot.classList.remove("bg-gray-200"); // أزل التأثير عند المغادرة
         });
 
         slot.addEventListener("drop", (e) => {
             e.preventDefault();
-            slot.classList.remove("bg-gray-300");
+            slot.classList.remove("bg-gray-200");
 
-            // Check if slot already contains a player
-            if (slot.querySelector(".player-card")) {
+            // تحقق من أن الموقع فارغ
+            if (slot.innerHTML.trim() !== "") {
                 alert("This slot is already occupied!");
                 return;
             }
 
-            // Get player name from drag event
-            const playerName = e.dataTransfer.getData("text/plain");
-            const player = players[playerName];
+            const cardHTML = e.dataTransfer.getData("text/plain");
+            slot.innerHTML = cardHTML; // أضف البطاقة المسقطة إلى الموقع
 
-            if (player) {
-                // Generate player card with stats
-                const playerHTML = `
-                    <div class="text-white  rounded-lg p-2 shadow-lg">
-                        <div class="flex justify-between items-center">
-                            <div class="text-center">
-                                <p class="text-xs font-bold">${player.rating}</p>
-                                <p class="text-xs font-semibold">${player.position}</p>
-                            </div>
-                            <img src="${player.countryImg}" alt="Flag of ${playerName}'s country" class="w-8 h-8 rounded-full border-2 border-white" />
-                        </div>
-                        <div class="flex justify-center mt-2">
-                            <img src="${player.playerImg}" alt="Image of ${playerName}" class="rounded-full w-16 h-16 border-2 border-gray-300" />
-                        </div>
-                        <div class="text-center text-sm pt-2 font-bold">
-                            <h1>${playerName}</h1>
-                        </div>
-                        <div class="flex flex-wrap justify-center mt-2">
-                            ${Object.entries(player.stats)
-                                .map(
-                                    ([key, value]) => `
-                                    <div class="w-1/3 text-center">
-                                        <p class="text-xs font-semibold">${value}</p>
-                                        <p class="text-xs text-gray-300">${key}</p>
-                                    </div>`
-                                )
-                                .join("")}
-                        </div>
-                    </div>
-                `;
-                slot.innerHTML = playerHTML;
-            }
+            // أعد تفعيل البطاقة المسقطة داخل الموقع
+            const droppedCard = slot.querySelector(".player-card");
+            droppedCard.style.display = "block";
+
+            // أعد تمكين السحب للبطاقة
+            droppedCard.addEventListener("dragstart", (e) => {
+                e.dataTransfer.setData("text/plain", e.target.outerHTML);
+                setTimeout(() => {
+                    e.target.style.display = "none";
+                }, 0);
+            });
+
+            droppedCard.addEventListener("dragend", (e) => {
+                e.target.style.display = "block";
+            });
         });
     });
 });
 
 </script>
-
         <div class="ter">
             <div class="1_7"></div>
             <div class="2_7"></div>
@@ -286,15 +235,15 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="6_7"></div>
             <div class="7_7"></div>
             <div class="1_6"></div>
-            <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg" draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
+            <div class="w-20 bg-red-500" id="4_6">
+                <div class="terrain-slot w-40 h-40 rounded-lg  bg-green-500" draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
                 </div>
             </div>
 
             <div class="3_6"></div>
             <div class="w-20" id="4_6">
                 <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
-                    <p class="text-center text-sm text-gray-500">Drop Player Here</p>
+                    
                 </div>
             </div>
 
@@ -302,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="5_6"></div>
             <div class="w-20" id="4_6">
                 <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
-                    <p class="text-center text-sm text-gray-500">Drop Player Here</p>
+                    
                 </div>
             </div>
 
@@ -312,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="3_6"></div>
             <div class="w-20" id="4_6">
                 <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
-                    <p class="text-center text-sm text-gray-500">Drop Player Here</p>
+                    
                 </div>
             </div>
 
@@ -322,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="1_5"></div>
             <div class="w-20" id="4_6">
                 <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
-                    <p class="text-center text-sm text-gray-500">Drop Player Here</p>
+                    
                 </div>
             </div>
 
@@ -331,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="5_5"></div>
             <div class="w-20" id="4_6">
                 <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
-                    <p class="text-center text-sm text-gray-500">Drop Player Here</p>
+                    
                 </div>
             </div>
 
@@ -339,25 +288,25 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="1_4"></div>
             <div class="w-20" id="4_6">
                 <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
-                    <p class="text-center text-sm text-gray-500">Drop Player Here</p>
+                    
                 </div>
             </div>
 
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
-                    <p class="text-center text-sm text-gray-500">Drop Player Here</p>
+                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat; margin-left: 30%;">
+                    
                 </div>
             </div>
             <div class="4_4"></div>
             <div class="w-20" id="4_6">
                 <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
-                    <p class="text-center text-sm text-gray-500">Drop Player Here</p>
+                    
                 </div>
             </div>
 
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
-                    <p class="text-center text-sm text-gray-500">Drop Player Here</p>
+                <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat; margin-left: 30%;">
+                    
                 </div>
             </div>
 
@@ -374,7 +323,6 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="3_2"></div>
             <div class="w-20" id="4_6">
                 <div class="terrain-slot w-32 h-40 rounded-lg"  draggable="true" id="slot-1" data-slot="1" style="background-image: url(../photos/images-removebg-preview.png); background-size:contain; background-repeat: no-repeat;">
-                    <p class="text-center text-sm text-gray-500">Drop Player Here</p>
                 </div>
             </div>
 

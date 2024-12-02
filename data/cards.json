@@ -1,33 +1,42 @@
 [
-    {
-      "rating": 85,
-      "position": "GK",
-      "flag": "https://storage.googleapis.com/a1aa/image/su0jyNJFSf19PSEleRtg72zMOHhF2DBeLJ8Q3m3yRRifneueE.jpg",
-      "playerImage": "https://storage.googleapis.com/a1aa/image/zbtrLenpQsW7WSAG4f8bDkHgZtgzkc8OcRStMVa7Pfp7TvrnA.jpg",
-      "playerName": "Player Name 1",
-      "stats": {
-        "PAC": 85,
-        "SHO": 91,
-        "PAS": 81,
-        "DRI": 86,
-        "DEF": 34,
-        "PHY": 75
-      }
-    },
-    {
-      "rating": 87,
-      "position": "GK",
-      "flag": "https://storage.googleapis.com/a1aa/image/su0jyNJFSf19PSEleRtg72zMOHhF2DBeLJ8Q3m3yRRifneueE.jpg",
-      "playerImage": "https://storage.googleapis.com/a1aa/image/zbtrLenpQsW7WSAG4f8bDkHgZtgzkc8OcRStMVa7Pfp7TvrnA.jpg",
-      "playerName": "Player Name 2",
-      "stats": {
-        "PAC": 88,
-        "SHO": 92,
-        "PAS": 80,
-        "DRI": 87,
-        "DEF": 33,
-        "PHY": 77
-      }
-    }
-  ]
-  
+  {
+      "name": "CRISTIANO RONALDO",
+      "position": "ST",
+      "rating": 90,
+      "stats": { "PAC": 85, "SHO": 91, "PAS": 81, "DRI": 86, "DEF": 34, "PHY": 75 },
+      "countryImg": "https://placehold.co/32x32?text=Portugal+Flag",
+      "playerImg": "https://placehold.co/64x64?text=Cristiano+Ronaldo"
+  },
+  {
+      "name": "LIONEL MESSI",
+      "position": "RW",
+      "rating": 91,
+      "stats": { "PAC": 87, "SHO": 90, "PAS": 92, "DRI": 95, "DEF": 34, "PHY": 68 },
+      "countryImg": "https://placehold.co/32x32?text=Argentina+Flag",
+      "playerImg": "https://placehold.co/64x64?text=Lionel+Messi"
+  },
+  {
+      "name": "NEYMAR JR",
+      "position": "LW",
+      "rating": 89,
+      "stats": { "PAC": 91, "SHO": 85, "PAS": 84, "DRI": 94, "DEF": 32, "PHY": 60 },
+      "countryImg": "https://placehold.co/32x32?text=Brazil+Flag",
+      "playerImg": "https://placehold.co/64x64?text=Neymar+Jr"
+  },
+  {
+      "name": "KEVIN DE BRUYNE",
+      "position": "CM",
+      "rating": 91,
+      "stats": { "PAC": 76, "SHO": 86, "PAS": 93, "DRI": 88, "DEF": 64, "PHY": 78 },
+      "countryImg": "https://placehold.co/32x32?text=Belgium+Flag",
+      "playerImg": "https://placehold.co/64x64?text=Kevin+De+Bruyne"
+  },
+  {
+      "name": "VIRGIL VAN DIJK",
+      "position": "CB",
+      "rating": 90,
+      "stats": { "PAC": 76, "SHO": 60, "PAS": 71, "DRI": 72, "DEF": 91, "PHY": 86 },
+      "countryImg": "https://placehold.co/32x32?text=Netherlands+Flag",
+      "playerImg": "https://placehold.co/64x64?text=Virgil+Van+Dijk"
+  }
+]
