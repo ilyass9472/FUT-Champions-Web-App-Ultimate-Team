@@ -112,13 +112,11 @@ document.addEventListener("DOMContentLoaded", () => {
         document.addEventListener("DOMContentLoaded", () => {
             const playerListContainer = document.getElementById("playerList");
         
-            // Fetch the JSON data
+            
             fetch("players.json")
                 .then((response) => response.json())
                 .then((data) => {
                     const players = data.players;
-        
-                    // Generate player cards
                     players.forEach((player) => {
                         const cardHTML = `
                             <div class="player-card text-white rounded-lg p-2 shadow-lg bg-gray-800" draggable="true" data-player="${player.name}">
@@ -172,85 +170,92 @@ document.addEventListener("DOMContentLoaded", () => {
                                 </div>
                             </div>
                         `;
-        
-                        // Append the generated card to the container
                         playerListContainer.innerHTML += cardHTML;
                     });
-        
-                    // Enable drag-and-drop functionality
                     enableDragAndDrop();
                 })
                 .catch((error) => console.error("Error fetching player data:", error));
         });
-        
         function enableDragAndDrop() {
-            const playerCards = document.querySelectorAll(".player-card");
-            const terrainSlots = document.querySelectorAll(".terrain-slot");
-        
-            playerCards.forEach((card) => {
-                card.addEventListener("dragstart", (e) => {
-                    e.dataTransfer.setData("text/plain", e.target.outerHTML);
-                    setTimeout(() => {
-                        e.target.style.display = "none";
-                    }, 0);
-                });
-        
-                card.addEventListener("dragend", (e) => {
-                    e.target.style.display = "block";
-                });
+    const playerCards = document.querySelectorAll(".player-card");
+    const terrainSlots = document.querySelectorAll(".terrain-slot");
+
+    playerCards.forEach((card) => {
+        card.addEventListener("dragstart", (e) => {
+
+            e.dataTransfer.setData("text/html", card.outerHTML);
+            setTimeout(() => {
+                card.style.display = "none";
+            }, 0);
+        });
+
+        card.addEventListener("dragend", (e) => {
+            card.style.display = "block";
+        });
+    });
+
+    terrainSlots.forEach((slot) => {
+        slot.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            slot.classList.add("bg-gray-200");
+        });
+
+        slot.addEventListener("dragleave", () => {
+            slot.classList.remove("bg-gray-200");
+        });
+
+        slot.addEventListener("drop", (e) => {
+            e.preventDefault();
+            slot.classList.remove("bg-gray-200");
+
+            if (slot.innerHTML.trim() !== "") {
+                alert("This slot is already occupied!");
+                return;
+            }
+
+            const cardHTML = e.dataTransfer.getData("text/html");
+            slot.innerHTML = cardHTML;
+            
+
+            const droppedCard = slot.querySelector(".player-card");
+            droppedCard.style.display = "block";
+            
+            droppedCard.addEventListener("dragstart", (e) => {
+                e.dataTransfer.setData("text/html", droppedCard.outerHTML);
+                setTimeout(() => {
+                    droppedCard.style.display = "none";
+                }, 0);
             });
-        
-            terrainSlots.forEach((slot) => {
-                slot.addEventListener("dragover", (e) => {
-                    e.preventDefault();
-                    slot.classList.add("bg-gray-200");
-                });
-        
-                slot.addEventListener("dragleave", () => {
-                    slot.classList.remove("bg-gray-200");
-                });
-        
-                slot.addEventListener("drop", (e) => {
-                    e.preventDefault();
-                    slot.classList.remove("bg-gray-200");
-        
-                    if (slot.innerHTML.trim() !== "") {
-                        alert("This slot is already occupied!");
-                        return;
-                    }
-        
-                    const cardHTML = e.dataTransfer.getData("text/plain");
-                    slot.innerHTML = cardHTML;
-        
-                    const droppedCard = slot.querySelector(".player-card");
-                    droppedCard.style.display = "block";
-                });
+
+            droppedCard.addEventListener("dragend", (e) => {
+                droppedCard.style.display = "block";
             });
-        }
+        });
+    });
+}
+
     </script>  
 <script>
     document.addEventListener("DOMContentLoaded", () => {
     const playerCards = document.querySelectorAll(".player-card");
     const terrainSlots = document.querySelectorAll(".terrain-slot");
 
-    // اجعل جميع البطاقات قابلة للسحب
     playerCards.forEach((card) => {
         card.addEventListener("dragstart", (e) => {
-            e.dataTransfer.setData("text/plain", e.target.outerHTML); // احفظ HTML البطاقة المسحوبة
+            e.dataTransfer.setData("text/plain", e.target.outerHTML);
             setTimeout(() => {
-                e.target.style.display = "none"; // أخفِ البطاقة أثناء السحب
+                e.target.style.display = "none";
             }, 0);
         });
 
         card.addEventListener("dragend", (e) => {
-            e.target.style.display = "block"; // أعد البطاقة عند انتهاء السحب
+            e.target.style.display = "block";
         });
     });
 
-    // اجعل جميع المواقع قابلة للإسقاط
     terrainSlots.forEach((slot) => {
         slot.addEventListener("dragover", (e) => {
-            e.preventDefault(); // السماح بالإسقاط
+            e.preventDefault();
         });
 
 
@@ -258,13 +263,13 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             slot.classList.remove("bg-gray-200");
             const cardHTML = e.dataTransfer.getData("text/plain");
-            slot.innerHTML = cardHTML; // أضف البطاقة المسقطة إلى الموقع
+            slot.innerHTML = cardHTML;
+            
 
-            // أعد تفعيل البطاقة المسقطة داخل الموقع
             const droppedCard = slot.querySelector(".player-card");
             droppedCard.style.display = "block";
 
-            // أعد تمكين السحب للبطاقة
+            
             droppedCard.addEventListener("dragstart", (e) => {
                 e.dataTransfer.setData("text/plain", e.target.outerHTML);
                 setTimeout(() => {
@@ -293,14 +298,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             <div class="3_6"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-1" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-2" data-slot="1"></div>
                 
             </div>
 
             
             <div class="5_6"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-1" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-3" data-slot="1"></div>
             </div>
 
             <div class="7_6"></div>
@@ -308,7 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="2_6"></div>
             <div class="3_6"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-1" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-4" data-slot="1"></div>
             </div>
 
             <div class="5_5"></div>
@@ -316,32 +321,32 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="7_5"></div>
             <div class="1_5"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-1" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-5" data-slot="1"></div>
             </div>
 
             <div class="3_5"></div>
             <div class="4_5"></div>
             <div class="5_5"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-1" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-6" data-slot="1"></div>
             </div>
 
             <div class="7_5"></div>
             <div class="1_4"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-1" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-7" data-slot="1"></div>
             </div>
 
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-1" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-8" data-slot="1"></div>
             </div>
             <div class="4_4"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-1" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-9" data-slot="1"></div>
             </div>
 
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-1" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-10" data-slot="1"></div>
             </div>
 
             <div class="7_4"></div>
@@ -356,7 +361,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="2_2"></div>
             <div class="3_2"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-1" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40 rounded-lg border border-gray-400 bg-gray-100 flex items-center justify-center" id="slot-11" data-slot="1"></div>
             </div>
 
             <div class="5_2"></div>
