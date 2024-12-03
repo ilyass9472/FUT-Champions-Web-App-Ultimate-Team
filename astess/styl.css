@@ -1,8 +1,16 @@
 .section {
     height: 700px;
   }
-  .ilyass{
-    width: 100px;
+  .card-bg {
+    background: linear-gradient(to top, #222, #444, #666);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .stats-bg {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
   }
   body{
     background-image: url(../photos/vue-stade-football-vide-ciel-fantastique-reveur_23-2151563002.jpg);
