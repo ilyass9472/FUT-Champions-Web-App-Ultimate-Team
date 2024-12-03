@@ -91,3 +91,18 @@
     transform: scale(0.8);
     transition: transform 0.3s ease;
 }
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #e3342f;
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.delete-btn:hover {
+  background-color: #cc1f1a;
+}
