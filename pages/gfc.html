@@ -16,15 +16,256 @@
 </head>
 
 <body class="bg-gray-100 p-4">
-    
-
-
-    <div class="container">
-
-        
-        <div id="playerList" class="grid grid-cols-4 gap-2 mb-4">
+    <div class="flex justify-center space-x-4 my-6">
+        <button id="openModal" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+          Add Card
+        </button>
+      </div>
+      
+      
+      <div id="cardContainer" class="grid grid-cols-4 gap-4 p-4"></div>
+      
+      
+      <div id="modal-add-card" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg p-6 w-96 max-h-[90vh] overflow-y-auto">
+          <h2 class="text-xl font-bold mb-4 text-gray-700">Add New Player</h2>
+          <form id="addCardForm">
+            <div class="mb-3">
+              <label for="playerName" class="block text-gray-600">Player Name</label>
+              <input
+                type="text"
+                id="playerName"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-green-200"
+                placeholder="Enter player name"
+                required
+              />
+            </div>
+      
+            
+            <div class="mb-3">
+              <label for="nationality" class="block text-gray-600">Nationality</label>
+              <select
+                id="nationality"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-green-200"
+                required
+              >
+                <option value="Argentina">Argentina</option>
+                <option value="Portugal">Portugal</option>
+                <option value="France">France</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Germany">Germany</option>
+                <option value="England">England</option>
+              </select>
+            </div>
+      
+            
+            <div class="mb-3">
+              <label for="position" class="block text-gray-600">Position</label>
+              <select
+                id="position"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-green-200"
+                required
+              >
+                <option value="GK">Goalkeeper (GK)</option>
+                <option value="CB">Center Back (CB)</option>
+                <option value="CM">Central Midfielder (CM)</option>
+                <option value="RW">Right Winger (RW)</option>
+                <option value="ST">Striker (ST)</option>
+              </select>
+            </div>
+      
+            
+            <div class="mb-3">
+              <label for="rating" class="block text-gray-600">Rating</label>
+              <input
+                type="number"
+                id="rating"
+                max="100"
+                min="1"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-green-200"
+                placeholder="Enter rating (1-100)"
+                required
+              />
+            </div>
+      
+            
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="pac" class="block text-gray-600">PAC</label>
+                <input
+                  type="number"
+                  id="pac"
+                  max="100"
+                  min="1"
+                  class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-green-200"
+                  required
+                />
+              </div>
+              <div>
+                <label for="sho" class="block text-gray-600">SHO</label>
+                <input
+                  type="number"
+                  id="sho"
+                  max="100"
+                  min="1"
+                  class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-green-200"
+                  required
+                />
+              </div>
+              <div>
+                <label for="pas" class="block text-gray-600">PAS</label>
+                <input
+                  type="number"
+                  id="pas"
+                  max="100"
+                  min="1"
+                  class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-green-200"
+                  required
+                />
+              </div>
+              <div>
+                <label for="dri" class="block text-gray-600">DRI</label>
+                <input
+                  type="number"
+                  id="dri"
+                  max="100"
+                  min="1"
+                  class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-green-200"
+                  required
+                />
+              </div>
+              <div>
+                <label for="def" class="block text-gray-600">DEF</label>
+                <input
+                  type="number"
+                  id="def"
+                  max="100"
+                  min="1"
+                  class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-green-200"
+                  required
+                />
+              </div>
+              <div>
+                <label for="phy" class="block text-gray-600">PHY</label>
+                <input
+                  type="number"
+                  id="phy"
+                  max="100"
+                  min="1"
+                  class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-green-200"
+                  required
+                />
+              </div>
+            </div>
+      
+            <!-- Buttons -->
+            <div class="flex justify-end mt-4 space-x-3">
+              <button
+                type="button"
+                id="closeModal"
+                class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+              >
+                Add Player
+              </button>
+            </div>
+          </form>
         </div>
+      </div>
+      
+      <script>
+        document.getElementById('openModal').addEventListener('click', () => {
+  document.getElementById('modal-add-card').classList.remove('hidden');
+});
 
+document.getElementById('closeModal').addEventListener('click', () => {
+  document.getElementById('modal-add-card').classList.add('hidden');
+});
+
+document.getElementById('addCardForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Fetch input values
+  const playerName = document.getElementById('playerName').value;
+  const nationality = document.getElementById('nationality').value;
+  const position = document.getElementById('position').value;
+  const rating = document.getElementById('rating').value;
+  const pac = document.getElementById('pac').value;
+  const sho = document.getElementById('sho').value;
+  const pas = document.getElementById('pas').value;
+  const dri = document.getElementById('dri').value;
+  const def = document.getElementById('def').value;
+  const phy = document.getElementById('phy').value;
+
+  
+  const cardHTML = `
+    <div class="player-card text-white w-35 h-30 rounded-lg p-2 shadow-lg bg-gray-800" draggable="true" data-player="${playerName}">
+      <div class="flex justify-between items-center">
+        <div class="text-center">
+          <p class="text-[8px] font-bold">${rating}</p>
+          <p class="text-[8px] font-semibold">${position}</p>
+        </div>
+        <img
+          src="https://flagcdn.com/w320/${nationality.slice(0, 2).toLowerCase()}.png"
+          alt="${nationality} Flag"
+          class="w-4 h-4 rounded-full border border-white"
+        />
+      </div>
+      <div class="flex justify-center mt-2">
+        <img
+          src="https://via.placeholder.com/48?text=${playerName.charAt(0)}"
+          alt="${playerName}"
+          class="rounded-full w-12 h-12 border border-gray-300"
+        />
+      </div>
+      <div class="text-center text-sm pt-2 font-bold">
+        <h1 class="text-[8px]">${playerName}</h1>
+      </div>
+      <div class="flex flex-wrap justify-center mt-2">
+        <div class="w-1/3 text-center">
+          <p class="text-[6px] font-semibold">${pac}</p>
+          <p class="text-[6px] text-gray-300">PAC</p>
+        </div>
+        <div class="w-1/3 text-center">
+          <p class="text-[6px] font-semibold">${sho}</p>
+          <p class="text-[6px] text-gray-300">SHO</p>
+        </div>
+        <div class="w-1/3 text-center">
+          <p class="text-[6px] font-semibold">${pas}</p>
+          <p class="text-[6px] text-gray-300">PAS</p>
+        </div>
+        <div class="w-1/3 text-center">
+          <p class="text-[6px] font-semibold">${dri}</p>
+          <p class="text-[6px] text-gray-300">DRI</p>
+        </div>
+        <div class="w-1/3 text-center">
+          <p class="text-[6px] font-semibold">${def}</p>
+          <p class="text-[6px] text-gray-300">DEF</p>
+        </div>
+        <div class="w-1/3 text-center">
+          <p class="text-[6px] font-semibold">${phy}</p>
+          <p class="text-[6px] text-gray-300">PHY</p>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Append to card container
+  const cardContainer = document.getElementById('cardContainer');
+  const newCard = document.createElement('div');
+  newCard.innerHTML = cardHTML.trim();
+  cardContainer.appendChild(newCard.firstChild);
+
+  // Close modal
+  document.getElementById('modal-add-card').classList.add('hidden');
+});
+
+      </script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const playerListContainer = document.getElementById("playerList");
@@ -33,27 +274,26 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((data) => {
             const players = data.players;
             players.forEach((player) => {
-                const cardHTML = `
-                    <div class="player-card text-white rounded-lg p-2 shadow-lg bg-gray-800" draggable="true" data-player="${player.name}">
+                    const cardHTML = `
+                    <div class="player-card text-white w-35 h-30 rounded-lg p-2 shadow-lg bg-gray-800" draggable="true" data-player="${player.name}">
                         <div class="flex justify-between items-center">
-                            <!-- Rating and Position -->
                             <div class="text-center">
                                 <p class="text-[8px] font-bold">${player.rating}</p>
                                 <p class="text-[8px] font-semibold">${player.position}</p>
                             </div>
-                            <!-- Nationality Flag -->
+
                             <img src="${player.flag}" alt="${player.nationality} Flag" class="w-4 h-4 rounded-full border border-white">
                         </div>
                         <div class="flex justify-center mt-2">
-                            <!-- Player Image -->
+                         
                             <img src="${player.photo}" alt="${player.name}" class="rounded-full w-12 h-12 border border-gray-300">
                         </div>
                         <div class="flex justify-center mt-1">
-                            <!-- Club Logo -->
+                           
                             <img src="${player.logo}" alt="${player.club} Logo" class="w-6 h-6 rounded-lg">
                         </div>
                         <div class="text-center text-sm pt-2 font-bold">
-                            <!-- Player Name -->
+                            
                             <h1 class="text-[8px]">${player.name}</h1>
                         </div>
                         <div class="flex flex-wrap justify-center mt-2">
@@ -108,82 +348,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 </script>
-        <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const playerListContainer = document.getElementById("playerList");
+
+<div class="container">
+
         
-            
-            fetch("players.json")
-                .then((response) => response.json())
-                .then((data) => {
-                    const players = data.players;
-                    players.forEach((player) => {
-                        const cardHTML = `
-                            <div class="player-card text-white rounded-lg p-2 shadow-lg bg-gray-800" draggable="true" data-player="${player.name}">
-                                <div class="flex justify-between items-center">
-                                    <!-- Rating and Position -->
-                                    <div class="text-center">
-                                        <p class="text-[8px] font-bold">${player.rating}</p>
-                                        <p class="text-[8px] font-semibold">${player.position}</p>
-                                    </div>
-                                    <!-- Nationality Flag -->
-                                    <img src="${player.flag}" alt="${player.nationality} Flag" class="w-4 h-4 rounded-full border border-white">
-                                </div>
-                                <div class="flex justify-center mt-2">
-                                    <!-- Player Image -->
-                                    <img src="${player.photo}" alt="${player.name}" class="rounded-full w-12 h-12 border border-gray-300">
-                                </div>
-                                <div class="flex justify-center mt-1">
-                                    <!-- Club Logo -->
-                                    <img src="${player.logo}" alt="${player.club} Logo" class="w-6 h-6 rounded-lg">
-                                </div>
-                                <div class="text-center text-sm pt-2 font-bold">
-                                    <!-- Player Name -->
-                                    <h1 class="text-[8px]">${player.name}</h1>
-                                </div>
-                                <div class="flex flex-wrap justify-center mt-2">
-                                    <!-- Player Stats -->
-                                    <div class="w-1/3 text-center">
-                                        <p class="text-[6px] font-semibold">${player.pace}</p>
-                                        <p class="text-[6px] text-gray-300">PAC</p>
-                                    </div>
-                                    <div class="w-1/3 text-center">
-                                        <p class="text-[6px] font-semibold">${player.shooting}</p>
-                                        <p class="text-[6px] text-gray-300">SHO</p>
-                                    </div>
-                                    <div class="w-1/3 text-center">
-                                        <p class="text-[6px] font-semibold">${player.passing}</p>
-                                        <p class="text-[6px] text-gray-300">PAS</p>
-                                    </div>
-                                    <div class="w-1/3 text-center">
-                                        <p class="text-[6px] font-semibold">${player.dribbling}</p>
-                                        <p class="text-[6px] text-gray-300">DRI</p>
-                                    </div>
-                                    <div class="w-1/3 text-center">
-                                        <p class="text-[6px] font-semibold">${player.defending}</p>
-                                        <p class="text-[6px] text-gray-300">DEF</p>
-                                    </div>
-                                    <div class="w-1/3 text-center">
-                                        <p class="text-[6px] font-semibold">${player.physical}</p>
-                                        <p class="text-[6px] text-gray-300">PHY</p>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                        playerListContainer.innerHTML += cardHTML;
-                    });
-                    enableDragAndDrop();
-                })
-                .catch((error) => console.error("Error fetching player data:", error));
-        });
-        function enableDragAndDrop() {
-    const playerCards = document.querySelectorAll(".player-card");
+    <div id="playerList" class="grid grid-cols-4 gap-2 mb-4">
+    </div>
+
+<div id="cardContainer" class="space-y-4"></div>
+
+        
+<script>
+    function enableDragAndDrop(players) {
     const terrainSlots = document.querySelectorAll(".terrain-slot");
 
-    playerCards.forEach((card) => {
+    
+    function makeCardDraggable(card) {
         card.addEventListener("dragstart", (e) => {
+            const cardHTML = card.outerHTML;
+            e.dataTransfer.setData("text/html", cardHTML);
 
-            e.dataTransfer.setData("text/html", card.outerHTML);
+            const parentSlot = card.parentElement;
+            if (parentSlot.classList.contains("terrain-slot")) {
+                parentSlot.setAttribute("data-dragged", "true");
+            }
+
             setTimeout(() => {
                 card.style.display = "none";
             }, 0);
@@ -192,8 +381,9 @@ document.addEventListener("DOMContentLoaded", () => {
         card.addEventListener("dragend", (e) => {
             card.style.display = "block";
         });
-    });
+    }
 
+    
     terrainSlots.forEach((slot) => {
         slot.addEventListener("dragover", (e) => {
             e.preventDefault();
@@ -208,78 +398,104 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             slot.classList.remove("bg-gray-200");
 
-            if (slot.innerHTML.trim() !== "") {
+            
+            if (slot.innerHTML.trim() !== "" && !slot.getAttribute("data-dragged")) {
                 alert("This slot is already occupied!");
                 return;
             }
 
+            
             const cardHTML = e.dataTransfer.getData("text/html");
-            slot.innerHTML = cardHTML;
-            
 
-            const droppedCard = slot.querySelector(".player-card");
-            droppedCard.style.display = "block";
-            
-            droppedCard.addEventListener("dragstart", (e) => {
-                e.dataTransfer.setData("text/html", droppedCard.outerHTML);
-                setTimeout(() => {
-                    droppedCard.style.display = "none";
-                }, 0);
-            });
+            if (cardHTML) {
+                
+                
+                slot.innerHTML = cardHTML;
 
-            droppedCard.addEventListener("dragend", (e) => {
-                droppedCard.style.display = "block";
-            });
+
+                const droppedCard = slot.querySelector(".player-card");
+                makeCardDraggable(droppedCard);
+
+                
+                const previousSlot = document.querySelector(".terrain-slot[data-dragged='true']");
+                if (previousSlot) {
+                    previousSlot.innerHTML = "";
+                    previousSlot.removeAttribute("data-dragged");
+                }
+            }
         });
+    });
+
+    
+    const playerCards = document.querySelectorAll(".player-card");
+    playerCards.forEach((card) => {
+        makeCardDraggable(card);
     });
 }
-
-    </script>  
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-    const playerCards = document.querySelectorAll(".player-card");
+    const playerListContainer = document.getElementById("playerList");
     const terrainSlots = document.querySelectorAll(".terrain-slot");
 
-    playerCards.forEach((card) => {
-        card.addEventListener("dragstart", (e) => {
-            e.dataTransfer.setData("text/plain", e.target.outerHTML);
-            setTimeout(() => {
-                e.target.style.display = "none";
-            }, 0);
-        });
-
-        card.addEventListener("dragend", (e) => {
-            e.target.style.display = "block";
-        });
-    });
-
-    terrainSlots.forEach((slot) => {
-        slot.addEventListener("dragover", (e) => {
-            e.preventDefault();
-        });
-
-
-        slot.addEventListener("drop", (e) => {
-            e.preventDefault();
-            slot.classList.remove("bg-gray-200");
-            const cardHTML = e.dataTransfer.getData("text/plain");
-            slot.innerHTML = cardHTML;
-            
-
-            const droppedCard = slot.querySelector(".player-card");
-            droppedCard.style.display = "block";
-
-            
-            droppedCard.addEventListener("dragstart", (e) => {
-                e.dataTransfer.setData("text/plain", e.target.outerHTML);
-                setTimeout(() => {
-                    e.target.style.display = "none";
-                }, 0);
+    fetch("../data/players.json")
+        .then((response) => response.json())
+        .then((data) => {
+            const players = data.players;
+            players.forEach((player) => {
+                const cardHTML = createPlayerCard(player);
+                playerListContainer.innerHTML += cardHTML;
             });
 
-          
+            enableDragAndDrop();
+        })
+        .catch((error) => console.error("Error fetching player data:", error));
+
+    function createPlayerCard(player) {
+        return `
+            
+        `;
+    }
+
+    function enableDragAndDrop() {
+        const playerCards = document.querySelectorAll(".player-card");
+
+        playerCards.forEach((card) => {
+            card.addEventListener("dragstart", (e) => {
+                e.dataTransfer.setData("text/plain", card.outerHTML);
+                setTimeout(() => card.style.display = "none", 0);
+            });
+
+            card.addEventListener("dragend", () => {
+                card.style.display = "block";
+            });
         });
-    });
+
+        terrainSlots.forEach((slot) => {
+            slot.addEventListener("dragover", (e) => {
+                e.preventDefault();
+                slot.classList.add("highlight");
+            });
+
+            slot.addEventListener("dragleave", () => {
+                slot.classList.remove("highlight");
+            });
+
+            slot.addEventListener("drop", (e) => {
+                e.preventDefault();
+                slot.classList.remove("highlight");
+                const cardHTML = e.dataTransfer.getData("text/plain");
+                slot.innerHTML = cardHTML;
+
+                const droppedCard = slot.querySelector(".player-card");
+                droppedCard.style.display = "block";
+                droppedCard.addEventListener("dragstart", (e) => {
+                    e.dataTransfer.setData("text/plain", cardHTML);
+                    setTimeout(() => droppedCard.style.display = "none", 0);
+                });
+            });
+        });
+    }
 });
 
 </script>
