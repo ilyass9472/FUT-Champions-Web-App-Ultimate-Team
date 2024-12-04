@@ -8,13 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-      body {
-          font-family: 'Roboto', sans-serif;
-      }
-  </style>
 </head>
-
 <body class="bg-gray-100 p-4">
     <div class="flex justify-center space-x-4 my-6">
         <button id="openModal" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
@@ -22,27 +16,6 @@
         </button>
       </div>
       
-      <button class=" justify-content-center bg-red-500 text-white text-xs px-2 py-1 rounded hover:bg-red-600 delete-btn">
-         delet cart
-    </button>
-<script>
-document.addEventListener('click', (e) => {
-
-  if (e.target.classList.contains('delete-btn')) {
-    
-    const card = e.target.closest('.player-card');
-    if (card) {
-      const confirmDelete = confirm('do you want to remove this cart');
-      if (confirmDelete) {
-       
-        card.remove();
-      }
-    }
-  }
-});
-
-</script>
-
       <div id="cardContainer" class="grid grid-cols-4 gap-4 p-4"></div>
       
       
@@ -60,15 +33,11 @@ document.addEventListener('click', (e) => {
                 required
               />
             </div>
-      
-            
             <div class="mb-3">
               <label for="nationality" class="block text-gray-600">Nationality</label>
               <select
                 id="nationality"
-                class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-green-200"
-                required
-              >
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-green-200"required>
                 <option value="Argentina">Argentina</option>
                 <option value="Portugal">Portugal</option>
                 <option value="France">France</option>
@@ -178,7 +147,7 @@ document.addEventListener('click', (e) => {
               </div>
             </div>
       
-            <!-- Buttons -->
+            
             <div class="flex justify-end mt-4 space-x-3">
               <button
                 type="button"
@@ -198,327 +167,15 @@ document.addEventListener('click', (e) => {
         </div>
       </div>
       
-      <script>
-        document.getElementById('openModal').addEventListener('click', () => {
-  document.getElementById('modal-add-card').classList.remove('hidden');
-});
-
-document.getElementById('closeModal').addEventListener('click', () => {
-  document.getElementById('modal-add-card').classList.add('hidden');
-});
-
-document.getElementById('addCardForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  // Fetch input values
-  const playerName = document.getElementById('playerName').value;
-  const nationality = document.getElementById('nationality').value;
-  const position = document.getElementById('position').value;
-  const rating = document.getElementById('rating').value;
-  const pac = document.getElementById('pac').value;
-  const sho = document.getElementById('sho').value;
-  const pas = document.getElementById('pas').value;
-  const dri = document.getElementById('dri').value;
-  const def = document.getElementById('def').value;
-  const phy = document.getElementById('phy').value;
-
-  
-  const cardHTML = `
-    <div class="player-card text-white w-35 h-30 rounded-lg p-2 shadow-lg bg-gray-800" draggable="true" data-player="${playerName}">
-      <div class="flex justify-between items-center">
-        <div class="text-center">
-          <p class="text-[8px] font-bold">${rating}</p>
-          <p class="text-[8px] font-semibold">${position}</p>
-        </div>
-        <img
-          src="https://flagcdn.com/w320/${nationality.slice(0, 2).toLowerCase()}.png"
-          alt="${nationality} Flag"
-          class="w-4 h-4 rounded-full border border-white"
-        />
-      </div>
-      <div class="flex justify-center mt-2">
-        <img
-          src="https://via.placeholder.com/48?text=${playerName.charAt(0)}"
-          alt="${playerName}"
-          class="rounded-full w-12 h-12 border border-gray-300"
-        />
-      </div>
-      <div class="text-center text-sm pt-2 font-bold">
-        <h1 class="text-[8px]">${playerName}</h1>
-      </div>
-      <div class="flex flex-wrap justify-center mt-2">
-        <div class="w-1/3 text-center">
-          <p class="text-[6px] font-semibold">${pac}</p>
-          <p class="text-[6px] text-gray-300">PAC</p>
-        </div>
-        <div class="w-1/3 text-center">
-          <p class="text-[6px] font-semibold">${sho}</p>
-          <p class="text-[6px] text-gray-300">SHO</p>
-        </div>
-        <div class="w-1/3 text-center">
-          <p class="text-[6px] font-semibold">${pas}</p>
-          <p class="text-[6px] text-gray-300">PAS</p>
-        </div>
-        <div class="w-1/3 text-center">
-          <p class="text-[6px] font-semibold">${dri}</p>
-          <p class="text-[6px] text-gray-300">DRI</p>
-        </div>
-        <div class="w-1/3 text-center">
-          <p class="text-[6px] font-semibold">${def}</p>
-          <p class="text-[6px] text-gray-300">DEF</p>
-        </div>
-        <div class="w-1/3 text-center">
-          <p class="text-[6px] font-semibold">${phy}</p>
-          <p class="text-[6px] text-gray-300">PHY</p>
-        </div>
-      </div>
-    </div>
-  `;
-
-  // Append to card container
-  const cardContainer = document.getElementById('cardContainer');
-  const newCard = document.createElement('div');
-  newCard.innerHTML = cardHTML.trim();
-  cardContainer.appendChild(newCard.firstChild);
-
-  // Close modal
-  document.getElementById('modal-add-card').classList.add('hidden');
-});
-
-      </script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const playerListContainer = document.getElementById("playerList");
-    fetch("../data/players.json")
-        .then((response) => response.json())
-        .then((data) => {
-            const players = data.players;
-            players.forEach((player) => {
-                    const cardHTML = `
-                    <div class="player-card text-white w-35 h-30 rounded-lg p-2 shadow-lg bg-gray-800" draggable="true" data-player="${player.name}">
-                        <div class="flex justify-between items-center">
-                            <div class="text-center">
-                                <p class="text-[8px] font-bold">${player.rating}</p>
-                                <p class="text-[8px] font-semibold">${player.position}</p>
-                            </div>
-
-                            <img src="${player.flag}" alt="${player.nationality} Flag" class="w-4 h-4 rounded-full border border-white">
-                        </div>
-                        <div class="flex justify-center mt-2">
-                         
-                            <img src="${player.photo}" alt="${player.name}" class="rounded-full w-12 h-12 border border-gray-300">
-                        </div>
-                        <div class="flex justify-center mt-1">
-                           
-                            <img src="${player.logo}" alt="${player.club} Logo" class="w-6 h-6 rounded-lg">
-                        </div>
-                        <div class="text-center text-sm pt-2 font-bold">
-                            
-                            <h1 class="text-[8px]">${player.name}</h1>
-                        </div>
-                        <div class="flex flex-wrap justify-center mt-2">
-                            <!-- Player Stats -->
-                            <div class="w-1/3 text-center">
-                                <p class="text-[6px] font-semibold">${player.pace}</p>
-                                <p class="text-[6px] text-gray-300">PAC</p>
-                            </div>
-                            <div class="w-1/3 text-center">
-                                <p class="text-[6px] font-semibold">${player.shooting}</p>
-                                <p class="text-[6px] text-gray-300">SHO</p>
-                            </div>
-                            <div class="w-1/3 text-center">
-                                <p class="text-[6px] font-semibold">${player.passing}</p>
-                                <p class="text-[6px] text-gray-300">PAS</p>
-                            </div>
-                            <div class="w-1/3 text-center">
-                                <p class="text-[6px] font-semibold">${player.dribbling}</p>
-                                <p class="text-[6px] text-gray-300">DRI</p>
-                            </div>
-                            <div class="w-1/3 text-center">
-                                <p class="text-[6px] font-semibold">${player.defending}</p>
-                                <p class="text-[6px] text-gray-300">DEF</p>
-                            </div>
-                            <div class="w-1/3 text-center">
-                                <p class="text-[6px] font-semibold">${player.physical}</p>
-                                <p class="text-[6px] text-gray-300">PHY</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
-             playerListContainer.innerHTML += cardHTML;
-            });
-            enableDragAndDrop();
-        })
-        .catch((error) => console.error("Error fetching player data:", error)); 
-    function enableDragAndDrop() {
-        const playerCards = document.querySelectorAll(".player-card");
-
-        playerCards.forEach((card) => {
-            card.addEventListener("dragstart", (e) => {
-                e.dataTransfer.setData("text/plain", e.target.getAttribute("data-player"));
-                setTimeout(() => {
-                    e.target.style.display = "none";
-                }, 0);
-            });
-
-            card.addEventListener("dragend", (e) => {
-                e.target.style.display = "block";
-            });
-        });
-    }
-});
-</script>
+      <script src="../script/modal.js"></script>
 
 <div class="container">
 
         
     <div id="playerList" class="grid grid-cols-4 gap-2 mb-4">
     </div>
-
-<div id="cardContainer" class="space-y-4"></div>
-
-        
-<script>
-    function enableDragAndDrop(players) {
-    const terrainSlots = document.querySelectorAll(".terrain-slot");
-
-    
-    function makeCardDraggable(card) {
-        card.addEventListener("dragstart", (e) => {
-            const cardHTML = card.outerHTML;
-            e.dataTransfer.setData("text/html", cardHTML);
-
-            const parentSlot = card.parentElement;
-            if (parentSlot.classList.contains("terrain-slot")) {
-                parentSlot.setAttribute("data-dragged", "true");
-            }
-
-            setTimeout(() => {
-                card.style.display = "none";
-            }, 0);
-        });
-
-        card.addEventListener("dragend", (e) => {
-            card.style.display = "block";
-        });
-    }
-
-    
-    terrainSlots.forEach((slot) => {
-        slot.addEventListener("dragover", (e) => {
-            e.preventDefault();
-            slot.classList.add("bg-gray-200");
-        });
-
-        slot.addEventListener("dragleave", () => {
-            slot.classList.remove("bg-gray-200");
-        });
-
-        slot.addEventListener("drop", (e) => {
-            e.preventDefault();
-            slot.classList.remove("bg-gray-200");
-
-            
-            if (slot.innerHTML.trim() !== "" && !slot.getAttribute("data-dragged")) {
-                alert("This slot is already occupied!");
-                return;
-            }
-
-            
-            const cardHTML = e.dataTransfer.getData("text/html");
-
-            if (cardHTML) {
-                
-                
-                slot.innerHTML = cardHTML;
-
-
-                const droppedCard = slot.querySelector(".player-card");
-                makeCardDraggable(droppedCard);
-
-                
-                const previousSlot = document.querySelector(".terrain-slot[data-dragged='true']");
-                if (previousSlot) {
-                    previousSlot.innerHTML = "";
-                    previousSlot.removeAttribute("data-dragged");
-                }
-            }
-        });
-    });
-
-    
-    const playerCards = document.querySelectorAll(".player-card");
-    playerCards.forEach((card) => {
-        makeCardDraggable(card);
-    });
-}
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-    const playerListContainer = document.getElementById("playerList");
-    const terrainSlots = document.querySelectorAll(".terrain-slot");
-
-    fetch("../data/players.json")
-        .then((response) => response.json())
-        .then((data) => {
-            const players = data.players;
-            players.forEach((player) => {
-                const cardHTML = createPlayerCard(player);
-                playerListContainer.innerHTML += cardHTML;
-            });
-
-            enableDragAndDrop();
-        })
-        .catch((error) => console.error("Error fetching player data:", error));
-
-    function createPlayerCard(player) {
-        return `
-            
-        `;
-    }
-
-    function enableDragAndDrop() {
-        const playerCards = document.querySelectorAll(".player-card");
-
-        playerCards.forEach((card) => {
-            card.addEventListener("dragstart", (e) => {
-                e.dataTransfer.setData("text/plain", card.outerHTML);
-                setTimeout(() => card.style.display = "none", 0);
-            });
-
-            card.addEventListener("dragend", () => {
-                card.style.display = "block";
-            });
-        });
-
-        terrainSlots.forEach((slot) => {
-            slot.addEventListener("dragover", (e) => {
-                e.preventDefault();
-                slot.classList.add("highlight");
-            });
-
-            slot.addEventListener("dragleave", () => {
-                slot.classList.remove("highlight");
-            });
-
-            slot.addEventListener("drop", (e) => {
-                e.preventDefault();
-                slot.classList.remove("highlight");
-                const cardHTML = e.dataTransfer.getData("text/plain");
-                slot.innerHTML = cardHTML;
-
-                const droppedCard = slot.querySelector(".player-card");
-                droppedCard.style.display = "block";
-                droppedCard.addEventListener("dragstart", (e) => {
-                    e.dataTransfer.setData("text/plain", cardHTML);
-                    setTimeout(() => droppedCard.style.display = "none", 0);
-                });
-            });
-        });
-    }
-});
-
-</script>
+<script src="../script/cartAjouteDragAndDrop.js"></script>
+<script src="../script/listDesPlayers.js"></script>
         <div class="ter">
             <div class="1_7"></div>
             <div class="2_7"></div>
@@ -528,25 +185,20 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="6_7"></div>
             <div class="7_7"></div>
             <div class="1_6"></div>
-<<<<<<< HEAD
-            <div class="w-20 bg-red-500" id="4_6">
-                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-1" data-slot="1"></div>
-=======
-            <div class="w-20 " id="4_6">
-                <div class="terrain-slot w-32 h-40 rounded-lg flex items-center justify-center" id="slot-1" data-slot="1"></div>
->>>>>>> 46cb68afc3db12f5efbf0a6193959065f2e52ed6
+            <div class="w-20 h-30" id="4_6">
+                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-st1" data-slot="st" data-postion="rw"></div>
             </div>
 
             <div class="3_6"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-2" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-st2" data-slot="st" data-postion="st"></div>
                 
             </div>
 
             
             <div class="5_6"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-3" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-st3" data-slot="st" data-postion="lw"></div>
             </div>
 
             <div class="7_6"></div>
@@ -554,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="2_6"></div>
             <div class="3_6"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-4" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-cm1" data-slot="cm" data-postion="cm"></div>
             </div>
 
             <div class="5_5"></div>
@@ -562,32 +214,32 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="7_5"></div>
             <div class="1_5"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-5" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-cm2" data-slot="cm" data-postion="cam"></div>
             </div>
 
             <div class="3_5"></div>
             <div class="4_5"></div>
             <div class="5_5"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-6" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-cm3" data-slot="cm" data-postion="cm"></div>
             </div>
 
             <div class="7_5"></div>
             <div class="1_4"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-7" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-cb1" data-slot="cb" data-postion="rb"></div>
             </div>
 
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-8" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-cb2" data-slot="cb" data-postion="cb"></div>
             </div>
             <div class="4_4"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-9" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-cb3" data-slot="cb" data-postion="cb"></div>
             </div>
 
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-10" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-cb4" data-slot="cb" data-postion="lb"></div>
             </div>
 
             <div class="7_4"></div>
@@ -602,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="2_2"></div>
             <div class="3_2"></div>
             <div class="w-20" id="4_6">
-                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-11" data-slot="1"></div>
+                <div class="terrain-slot w-32 h-40  flex items-center justify-center" id="slot-gk" data-slot="gk" data-postion="gk"></div>
             </div>
 
             <div class="5_2"></div>

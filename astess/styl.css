@@ -1,6 +1,7 @@
-.section {
-    height: 700px;
-  }
+ body{
+  background-image: url(../photos/dimensions-officielles-du-terrain-de-football-de-la-fifa.jpeg);
+  background-repeat: repeat-y;
+ }
   .card-bg {
     background: linear-gradient(to top, #222, #444, #666);
     border-radius: 20px;
@@ -9,14 +10,8 @@
 
   .stats-bg {
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    border-radius: 20px;
     backdrop-filter: blur(10px);
-  }
-  body{
-    background-image: url(../photos/vue-stade-football-vide-ciel-fantastique-reveur_23-2151563002.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    width: 100%;
   }
   .background-section {
     background-image: url('https://www.futbin.com/design2/img/static/field-bg.svg');
@@ -38,7 +33,7 @@
   .list { 
     height: 100%;
     grid-area: list;
-  }
+     }
   .ter {
     display: grid; 
   grid-template-columns: 0.75fr 0.75fr 0.75fr 0.75fr 0.75fr 0.75fr 0.75fr; 
@@ -112,5 +107,13 @@
   cursor: pointer;
 }
 .delete-btn:hover {
+  background-color: #cc1f1a;
+}
+#deleteZone {
+  border: 2px dashed white;
+  background-color: #e3342f;
+  transition: background-color 0.3s ease;
+}
+#deleteZone.dragover {
   background-color: #cc1f1a;
 }
